@@ -1,45 +1,60 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
-function ProgressTrackerWithGoals() {
-  const [progress, setProgress] = useState(0);
+const ProgressTracker = () => {
   const [goals, setGoals] = useState([]);
-  const [newGoal, setNewGoal] = useState('');
-  
-  const handleIncrease = () => {
-    setProgress(progress + 10);
-  };
-  
-  const handleDecrease = () => {
-    setProgress(progress - 10);
-  };
-  
+  const [newGoal, setNewGoal] = useState("");
+  const [progressValues, setProgressValues] = useState([]);
+
   const handleAddGoal = () => {
-    setGoals([...goals, newGoal]);
-    setNewGoal('');
+    if (newGoal) {
+      setGoals([...goals, newGoal]);
+      setProgressValues([...progressValues, 0]);
+      setNewGoal("");
+    }
   };
-  
+
+  const handleDeleteGoal = (index) => {
+    setGoals(goals.filter((goal, i) => i !== index));
+    setProgressValues(progressValues.filter((value, i) => i !== index));
+  };
+
+  const handleProgressChange = (index, value) => {
+    const updatedValues = [...progressValues];
+    updatedValues[index] = value;
+    setProgressValues(updatedValues);
+  };
+
   return (
     <div className="ProgressTrackerWithGoals">
-      <h1>Progress Tracker</h1>
-      <p>Current Progress: {progress}%</p>
-      <button onClick={handleIncrease}>Increase Progress</button>
-      <button onClick={handleDecrease}>Decrease Progress</button>
-      <hr />
-      <h2>Goals</h2>
-      <ul>
-        {goals.map((goal, index) => (
-          <li key={index}>{goal}</li>
-        ))}
-      </ul>
-      <input 
-        type="text" 
-        placeholder="Enter a new goal" 
-        value={newGoal} 
-        onChange={(e) => setNewGoal(e.target.value)} 
-      />
-      <button onClick={handleAddGoal}>Add Goal</button>
+
+      <div>
+        <h1>Progress Tracker</h1>
+        <div>
+          <input
+            type="text"
+            value={newGoal}
+            onChange={(e) => setNewGoal(e.target.value)}
+          />
+          <button onClick={handleAddGoal}>Add Goal</button>
+        </div>
+        <ul>
+          {goals.map((goal, index) => (
+            <li key={index}>
+              <span>{goal}</span>
+              <input
+                type="number"
+                value={progressValues[index]}
+                onChange={(e) =>
+                  handleProgressChange(index, parseInt(e.target.value))
+                }
+              />
+              <button onClick={() => handleDeleteGoal(index)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
-}
+};
 
-export default ProgressTrackerWithGoals;
+export default ProgressTracker;
