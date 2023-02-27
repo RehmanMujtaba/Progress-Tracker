@@ -36,3 +36,115 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  font-size: 36px;
+  margin-top: 40px;
+}
+
+.form {
+  margin-top: 40px;
+}
+
+.form input {
+  font-size: 18px;
+  padding: 8px 12px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+}
+
+.form button {
+  font-size: 18px;
+  padding: 8px 12px;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.goal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.goal-text {
+  font-size: 24px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.progress-bar {
+  width: 70%;
+  height: 20px;
+  border-radius: 10px;
+  background-color: #e6e6e6;
+  margin-right: 20px;
+  position: relative;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 10px;
+  background-color: #0077cc;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.ProgressTrackerWithGoals {
+  font-family: Arial, sans-serif;
+  width: 400px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 18px;
+}
+
+button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #00688B;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+li {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
